@@ -1,3 +1,34 @@
+.display {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-end;
+  width: 95%;
+  margin: 15px auto;
+  &__top {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    p {
+      color: white;
+      width: 100%;
+      padding: 0 20px;
+    }
+  }
+  &__bottom {
+    background-color: white;
+    width: calc(100% - 40px);
+    height: 50px;
+    border-radius: 50px;
+    padding: 10px 20px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    font-size: 36px;
+  }
+}
+
 .keyboard {
   display: flex;
   justify-content: space-between;
@@ -7,29 +38,35 @@
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(5, 1fr);
+    margin-top: 5px;
     div {
-      // border: 1px solid white;
       display: flex;
       justify-content: center;
       align-items: center;
-      h1 {
-        padding: 5px 20px;
+      button {
+        background-color: transparent;
+        padding: 10px 20px;
         color: white;
+        text-align: center;
         border: 1px solid transparent;
         cursor: pointer;
         span.index {
           font-size: 14px;
           vertical-align: top;
         }
-        span.root {
-          font-weight: 700;
-        }
-        &:hover:not(.div17 h1) {
+        &:hover:not(.div17 button) {
           padding: 5px 20px;
           border: 1px solid white;
         }
       }
     }
+    .div17 button {
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+    
+    
     .div1 { grid-area: 5 / 1 / 6 / 2; }
     .div2 { grid-area: 4 / 1 / 5 / 2; }
     .div3 { grid-area: 4 / 2 / 5 / 3; }
@@ -46,7 +83,7 @@
     .div14 { grid-area: 4 / 4 / 5 / 5; }
     .div15 { grid-area: 3 / 4 / 4 / 5; }
     .div16 { grid-area: 2 / 4 / 3 / 5; }
-    .div17 { grid-area: 3 / 5 / 6 / 6; box-shadow: 0px 0px 5px 0px #f4f4f4; &:hover { box-shadow: 0px 0px 20px 2px #f4f4f4; } }
+    .div17 { grid-area: 3 / 5 / 6 / 6; }
     .div18 { grid-area: 2 / 5 / 3 / 6; }
     .div19 { grid-area: 1 / 5 / 2 / 6; }
     .div20 { grid-area: 1 / 4 / 2 / 5; }
@@ -58,21 +95,29 @@
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(5, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-    h1 {
-      padding: 5px 20px;
-      color: white;
-      border: 1px solid transparent;
-      cursor: pointer;
-      span.index {
-        font-size: 14px;
-        vertical-align: top;
+    margin-top: 5px;
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      button {
+        background-color: transparent;
+        font-size: 20px;
+        padding: 10px 20px;
+        color: white;
+        border: 1px solid transparent;
+        cursor: pointer;
+        text-align: center;
+        span.index {
+          font-size: 11px;
+          vertical-align: top;
+        }
+        &:hover:not(.div21 button) {
+          padding: 10px 20px;
+          border: 1px solid white;
+        }
       }
-      &:hover {
-        padding: 5px 20px;
-        border: 1px solid white;
-      }
+
     }
     .div1 { grid-area: 5 / 5 / 6 / 6; }
     .div2 { grid-area: 5 / 4 / 6 / 5; }
@@ -99,6 +144,19 @@
     .div23 { grid-area: 3 / 1 / 4 / 2; }
     .div24 { grid-area: 4 / 1 / 5 / 2; }
     .div25 { grid-area: 5 / 1 / 6 / 2; }
+  }  
+}
 
+.shadow {
+  box-shadow: 0px 0px 5px 0px #f4f4f4;
+  &:active { box-shadow: 0px 0px 20px 2px #f4f4f4;
   }
+}
+
+button:active {
+  transform: scale(1.1);
+}
+
+button, span {
+  user-select: none;
 }
