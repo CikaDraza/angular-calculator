@@ -1,3 +1,5 @@
+@import '../../mixin';
+
 .display {
   display: flex;
   flex-direction: column;
@@ -5,6 +7,14 @@
   align-items: flex-end;
   width: 95%;
   margin: 15px auto;
+  @include mobile {
+    p {
+      padding: 10px;
+    }
+  }
+  &__vendor {
+    color: #f4f4f4;
+  }
   &__top {
     width: 100%;
     display: flex;
@@ -14,6 +24,9 @@
       color: white;
       width: 100%;
       padding: 0 20px;
+      @include mobile {
+        padding: 0 10px;
+      }
     }
   }
   &__bottom {
@@ -26,6 +39,12 @@
     display: flex;
     align-items: center;
     font-size: 36px;
+    @include mobile {
+      font-size: 24px;
+      border-radius: 25px;
+      padding: 5px 20px;
+      height: 35px;
+    }
   }
 }
 
@@ -33,7 +52,11 @@
   display: flex;
   justify-content: space-between;
   padding: 0 20px;
-  .keyboard__pads {
+  @include mobile {
+    justify-content: center;
+    padding: 0 10px;
+  }
+  .keyboard__keys {
     height: 100%;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -50,13 +73,24 @@
         text-align: center;
         border: 1px solid transparent;
         cursor: pointer;
+        @include mobile {
+          font-size: 18px;
+          padding: 10px;
+        }
         span.index {
           font-size: 14px;
           vertical-align: top;
+          @include mobile {
+            font-size: 10px;
+          }
         }
         &:hover:not(.div17 button) {
           padding: 5px 20px;
           border: 1px solid white;
+          @include mobile {
+            border: none;
+            padding: 5px 10px;
+          }
         }
       }
     }
@@ -96,6 +130,9 @@
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(5, 1fr);
     margin-top: 5px;
+    @include mobile {
+      display: none;
+    }
     div {
       display: flex;
       align-items: center;
@@ -108,6 +145,7 @@
         border: 1px solid transparent;
         cursor: pointer;
         text-align: center;
+        
         span.index {
           font-size: 11px;
           vertical-align: top;
@@ -149,7 +187,11 @@
 
 .shadow {
   box-shadow: 0px 0px 5px 0px #f4f4f4;
-  &:active { box-shadow: 0px 0px 20px 2px #f4f4f4;
+  @include mobile {
+    box-shadow: none;
+  }
+  &:active { 
+    box-shadow: 0px 0px 20px 2px #f4f4f4;
   }
 }
 
@@ -159,4 +201,9 @@ button:active {
 
 button, span {
   user-select: none;
+}
+
+.used {
+  pointer-events: none;
+  opacity: 0.2;
 }

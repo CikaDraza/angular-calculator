@@ -1,3 +1,5 @@
+@import 'mixin';
+
 .spacer {
   flex: 1;
 }
@@ -39,6 +41,10 @@
   max-width: 960px;
   flex-direction: column;
   align-items: center;
+  @include mobile {
+    position: relative;
+    height: 100vh;
+  }
 }
 
 svg.material-icons {
@@ -57,6 +63,9 @@ svg.material-icons:not(:last-child) {
   flex-wrap: wrap;
   justify-content: center;
   margin-top: 16px;
+  @include mobile {
+    width: 300px;
+  }
   .calc {
     width: 100%;
     border: 3px solid rgb(255, 255, 255);
@@ -66,13 +75,10 @@ svg.material-icons:not(:last-child) {
     flex-direction: column;
     overflow: hidden;
     padding: 30px 40px;
-    &__display {
-      width: 100%;
-      // height: 150px;
-      background-color: transparent;
-      display: flex;
-      justify-content: center;
-      margin-bottom: 10px;
+    @include mobile {
+      padding: 10px 20px;
+      border: none;
+      background: none;
     }
     
     &__keyboard {
@@ -82,6 +88,10 @@ svg.material-icons:not(:last-child) {
       border-radius: 25px;
       overflow: hidden;
       box-shadow: 0px 0px 20px 2px #f4f4f4;
+      @include mobile {
+        font-size: 10px;
+        height: 400px;
+      }
     }
   }
 }
@@ -155,11 +165,20 @@ footer {
   line-height: 20px;
   position: absolute;
   bottom: 50px;
+  @include mobile {
+    bottom: 0;
+    flex-direction: column;
+  }
 }
 
 footer a {
   display: flex;
   align-items: center;
+  &:last-child {
+    @include mobile {
+      display: none;
+    }
+  }
 }
 
 .github-star-badge {

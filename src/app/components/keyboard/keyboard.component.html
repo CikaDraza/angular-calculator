@@ -1,20 +1,23 @@
 <div class="display">
-  <div class="display__top">
+  <div class="display__vendor">
     <p>KA-22</p>
+  </div>
+  <div class="display__top">
+    <p>{{ displayValue.join('') }}</p>
   </div>
   <div class="display__bottom">
     <p>{{ result }}</p>
   </div>
 </div>
 <div class="keyboard">
-  <div class="keyboard__advanced">
-    <div *ngFor="let object of advancedButtons">
-      <button type="button" (click)="pressBtn(object.value)"><span class="index">{{object.prefixIndex && object.prefixIndex}}</span><span class="prefix">{{object.prefix && object.prefix}}</span>{{object.value}}<span class="index">{{object.index && object.index}}</span></button>
+  <div class="keyboard__advanced used">
+    <div *ngFor="let advKeys of advancedButtons">
+      <button type="button" value="{{advKeys.value}}" (click)="addValue(advKeys.value)"><span class="index">{{advKeys.prefixIndex && advKeys.prefixIndex}}</span><span class="prefix">{{advKeys.prefix && advKeys.prefix}}</span>{{advKeys.name}}<span class="index">{{advKeys.index && advKeys.index}}</span></button>
     </div>
   </div>  
-  <div class="keyboard__pads">
-    <div *ngFor="let button of buttons" [ngClass]="button.class == 'div17' ? 'div17 shadow' : 'button.class'">
-      <button type="button" (click)="pressBtn(button.value)"><span class="prefix">{{button.prefix && button.prefix}}</span>{{button.value}}<span class="index">{{button.index && button.index}}</span></button>
+  <div class="keyboard__keys">
+    <div *ngFor="let keys of buttons" [ngClass]="keys.class == 'div17' ? 'div17 shadow' : 'keys.class'">
+      <button type="button" value="{{keys.value}}" (click)="addValue(keys.value)"><span class="prefix">{{keys.prefix && keys.prefix}}</span>{{keys.name}}<span class="index">{{keys.index && keys.index}}</span></button>
     </div>
   </div>
 </div>
